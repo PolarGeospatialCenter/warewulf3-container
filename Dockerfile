@@ -6,7 +6,7 @@ RUN yum -y update && \
     rm -rf /var/cache/yum/
 WORKDIR /root
 
-RUN git clone https://github.com/warewulf/warewulf3.git
+RUN git clone https://github.com/azenk/warewulf3.git && cd warewulf3 && git checkout jsondump
 WORKDIR /root/warewulf3/common
 RUN ./autogen.sh && ./configure && make && make install
 WORKDIR /root/warewulf3/cluster
