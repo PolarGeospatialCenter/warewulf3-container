@@ -23,7 +23,7 @@ RUN tar -zxf /src/consul-template_0.19.5_linux_amd64.tgz -C /usr/local/bin/
 FROM centos:7
 
 RUN yum -y update && \
-    yum install -y which dhcp tftp-server sqlite perl-DBD-SQLite perl-Sys-Syslog perl-Digest-MD5 epel-release httpd && \
+    yum install -y which dhcp tftp-server sqlite perl-DBD-SQLite perl-Sys-Syslog perl-Digest-MD5 perl-JSON-PP epel-release httpd && \
     yum install -y mod_perl && \
     yum clean all && \
     rm -rf /var/cache/yum/
