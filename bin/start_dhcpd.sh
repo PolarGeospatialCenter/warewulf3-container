@@ -6,4 +6,4 @@ make_data_dirs
 consul-template -once -config /etc/consul-template/conf.d/provision.toml
 wwsh dhcp update
 
-exec consul-template -config /etc/consul-template/conf.d/ -exec "/usr/sbin/dhcpd -f"
+exec consul-template -config /etc/consul-template/conf.d/dhcpd.toml -exec "/usr/sbin/dhcpd -f"
