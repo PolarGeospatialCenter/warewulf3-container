@@ -36,4 +36,4 @@ COPY warewulf/ /usr/local/etc/warewulf/
 COPY bin/ /usr/local/bin/
 RUN mkdir -p /data/{db,binstore} && \
     ln -s /data/binstore /usr/local/var/warewulf/binstore && \
-    ln -s /usr/local/etc/httpd/conf.d/warewulf.conf /etc/httpd/conf.d/warewulf.conf
+    ln -s /usr/local/etc/httpd/conf.d/warewulf-httpd.conf /etc/httpd/conf.d/warewulf-httpd.conf
