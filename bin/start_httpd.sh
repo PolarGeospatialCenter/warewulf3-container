@@ -5,4 +5,4 @@ make_data_dirs
 
 wwinit database
 
-exec consul-template -config /etc/consul-template/conf.d/ -exec "httpd -DFOREGROUND"
+exec httpd -DFOREGROUND
