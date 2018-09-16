@@ -35,4 +35,5 @@ COPY consul-template /etc/consul-template
 COPY warewulf/ /usr/local/etc/warewulf/
 COPY bin/ /usr/local/bin/
 RUN mkdir -p /data/{db,binstore} && \
-    ln -s /data/binstore /usr/local/var/warewulf/binstore
+    ln -s /data/binstore /usr/local/var/warewulf/binstore && \
+    ln -s /usr/local/etc/httpd/conf.d/warewulf.conf /etc/httpd/conf.d/warewulf.conf
