@@ -20,16 +20,19 @@ RUN ./autogen.sh && ./configure && make && make install
 ADD https://releases.hashicorp.com/consul-template/0.19.5/consul-template_0.19.5_linux_amd64.tgz /src/
 RUN tar -zxf /src/consul-template_0.19.5_linux_amd64.tgz -C /usr/local/bin/
 
+FROM quay.io/polargeospatialcenter/warewulf-sync:2018.09.20.r00
+
 FROM centos:7
 
 RUN yum -y update && \
     yum install -y which dhcp tftp-server sqlite perl-DBD-SQLite perl-Sys-Syslog perl-Digest-MD5 perl-JSON-PP perl-CGI epel-release httpd && \
-    yum install -y mod_perl jq && \
+    yum install -y mod_perl jq git && \
     yum clean all && \
     rm -rf /var/cache/yum/
 
 COPY --from=0 /usr/share/perl5/vendor_perl/Warewulf/ /usr/share/perl5/vendor_perl/Warewulf/
 COPY --from=0 /usr/local/ /usr/local/
+COPY --from=1 /bin/warewulf-sync /usr/local/bin/warewulf-sync
 
 COPY consul-template /etc/consul-template
 COPY warewulf/ /usr/local/etc/warewulf/
