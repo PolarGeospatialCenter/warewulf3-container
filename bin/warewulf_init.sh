@@ -21,5 +21,9 @@ git checkout $GIT_REF
 
 warewulf-sync
 
+if [ ! -z ${WWMASTER_IPS+x} ]; then
+  wwsh node list -1 | xargs wwsh provision set --master "${WWMASTER_IPS}"
+fi
+
 wwsh dhcp update -v
 wwsh pxe update -v
