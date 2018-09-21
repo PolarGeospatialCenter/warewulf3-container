@@ -37,6 +37,8 @@ COPY --from=0 /usr/share/perl5/vendor_perl/Warewulf/ /usr/share/perl5/vendor_per
 COPY --from=0 /usr/local/ /usr/local/
 COPY --from=1 /bin/warewulf-sync /usr/local/bin/warewulf-sync
 
+COPY healthcheck/health.pl /usr/local/libexec/warewulf/cgi-bin/health.pl
+COPY healthcheck/health.conf /etc/httpd/conf.d/
 COPY consul-template /etc/consul-template
 COPY warewulf/ /usr/local/etc/warewulf/
 COPY bin/ /usr/local/bin/
