@@ -8,7 +8,10 @@ WORKDIR /root
 
 RUN git clone https://github.com/azenk/warewulf3.git && cd warewulf3 && git checkout jsondump
 WORKDIR /root/warewulf3/common
-RUN ./autogen.sh && ./configure && make && make install
+RUN ./autogen.sh &&\
+    ./configure --localstatedir /data &&\
+    make &&\
+    make install
 WORKDIR /root/warewulf3/cluster
 RUN ./autogen.sh && ./configure && make && make install
 WORKDIR /root/warewulf3/vnfs
@@ -37,6 +40,5 @@ COPY --from=1 /bin/warewulf-sync /usr/local/bin/warewulf-sync
 COPY consul-template /etc/consul-template
 COPY warewulf/ /usr/local/etc/warewulf/
 COPY bin/ /usr/local/bin/
-RUN mkdir -p /data/{db,binstore} && \
-    ln -s /data/binstore /usr/local/var/warewulf/binstore && \
+RUN mkdir -p /data/{db,binstore,config,tftp,warewulf} && \
     ln -s /usr/local/etc/httpd/conf.d/warewulf-httpd.conf /etc/httpd/conf.d/warewulf-httpd.conf

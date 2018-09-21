@@ -9,7 +9,6 @@ source /usr/local/bin/common.sh
 make_data_dirs
 load_configs
 
-touch /data/config/dhcpd.conf
 wwinit database
 
 mkdir -p /root/.ssh
@@ -22,4 +21,5 @@ git checkout $GIT_REF
 
 warewulf-sync
 
-wwsh dhcp update
+wwsh dhcp update -v
+wwsh pxe update -v
