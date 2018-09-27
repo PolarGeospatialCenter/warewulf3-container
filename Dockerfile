@@ -6,7 +6,7 @@ RUN yum -y update && \
     rm -rf /var/cache/yum/
 WORKDIR /root
 
-RUN git clone https://github.com/azenk/warewulf3.git && cd warewulf3 && git checkout jsondump
+RUN git clone https://github.com/azenk/warewulf3.git && cd warewulf3 && git checkout ipxeversionembed
 WORKDIR /root/warewulf3/common
 RUN ./autogen.sh &&\
     ./configure --localstatedir /data &&\
