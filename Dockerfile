@@ -1,7 +1,7 @@
 FROM centos:7
 
 RUN yum -y update && \
-    yum -y install openssh tar git autoconf automake gcc kmod make perl-Sys-Syslog perl-Digest-MD5 && \
+    yum -y install openssh tar git autoconf automake gcc kmod make perl-Sys-Syslog perl-Digest-MD5 libtirpc-devel && \
     yum clean all && \
     rm -rf /var/cache/yum/
 WORKDIR /root
@@ -28,7 +28,7 @@ FROM quay.io/polargeospatialcenter/warewulf-sync:2018.09.20.r00
 FROM centos:7
 
 RUN yum -y update && \
-    yum install -y which dhcp tftp-server sqlite perl-DBD-SQLite perl-Sys-Syslog perl-Digest-MD5 perl-JSON-PP perl-CGI epel-release httpd && \
+    yum install -y which dhcp tftp-server sqlite perl-DBD-SQLite libtirpc perl-Sys-Syslog perl-Digest-MD5 perl-JSON-PP perl-CGI epel-release httpd && \
     yum install -y mod_perl jq git && \
     yum clean all && \
     rm -rf /var/cache/yum/
