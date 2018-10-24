@@ -44,5 +44,6 @@ COPY consul-template /etc/consul-template
 COPY warewulf/ /usr/local/etc/warewulf/
 COPY bin/ /usr/local/bin/
 RUN mkdir -p /data/{db,binstore,config,tftp,warewulf} && \
+    mkdir -p /data/warewulf/{bootstrap,ipxe} && \
     ln -s /usr/local/etc/httpd/conf.d/warewulf-httpd.conf /etc/httpd/conf.d/warewulf-httpd.conf &&\
     touch /var/www/html/index.html
