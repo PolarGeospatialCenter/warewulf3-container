@@ -13,12 +13,12 @@ RUN ./autogen.sh &&\
     make &&\
     make install
 WORKDIR /root/warewulf3/cluster
-RUN ./autogen.sh && ./configure && make && make install
+RUN ./autogen.sh && ./configure && make -j 8 && make install
 WORKDIR /root/warewulf3/vnfs
-RUN ./autogen.sh && ./configure && make && make install
+RUN ./autogen.sh && ./configure && make -j 8 && make install
 WORKDIR /root/warewulf3/provision
 RUN yum install -y bzip2 libselinux-devel libuuid-devel device-mapper-devel xz-devel
-RUN ./autogen.sh && ./configure && make && make install
+RUN ./autogen.sh && ./configure && make -j 8 && make install
 
 ADD https://releases.hashicorp.com/consul-template/0.19.5/consul-template_0.19.5_linux_amd64.tgz /src/
 RUN tar -zxf /src/consul-template_0.19.5_linux_amd64.tgz -C /usr/local/bin/
