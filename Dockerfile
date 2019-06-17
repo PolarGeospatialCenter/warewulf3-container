@@ -23,8 +23,6 @@ RUN ./autogen.sh && ./configure && make -j 8 && make install
 ADD https://releases.hashicorp.com/consul-template/0.19.5/consul-template_0.19.5_linux_amd64.tgz /src/
 RUN tar -zxf /src/consul-template_0.19.5_linux_amd64.tgz -C /usr/local/bin/
 
-FROM quay.io/polargeospatialcenter/warewulf-sync:2019.06.17.123500
-
 FROM centos:7
 
 RUN yum -y update && \
