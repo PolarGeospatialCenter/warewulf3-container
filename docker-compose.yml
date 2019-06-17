@@ -1,7 +1,7 @@
 version: "3"
 services:
   httpd:
-    build: 
+    build:
       context: .
     image: quay.io/polargeospatialcenter/warewulf3:latest
     command: ["start_httpd.sh"]
@@ -9,26 +9,5 @@ services:
       - data:/data
     ports:
       - "80:80"
-  dhcpd:
-    build: 
-      context: .
-    image: quay.io/polargeospatialcenter/warewulf3:latest
-    command: ["start_dhcpd.sh"]
-    environment:
-      WAREWULF_NET_DEVICE: "eth0"
-    volumes:
-      - data:/data
-    ports:
-      - "67:67/udp"
-      - "68:68/udp"
-  tftpd:
-    build: 
-      context: .
-    image: quay.io/polargeospatialcenter/warewulf3:latest
-    command: ["start_tftpd.sh"]
-    volumes:
-      - data:/data
-    ports:
-      - "69:69/udp"
 volumes:
   data:

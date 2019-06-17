@@ -5,6 +5,5 @@ function make_data_dirs() {
 }
 
 function load_configs() {
-  touch /data/config/dhcpd.conf
   consul-template -config /etc/consul-template/conf.d/ -once
 }
