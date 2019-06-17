@@ -34,7 +34,6 @@ RUN yum -y update && \
 COPY --from=0 /usr/share/perl5/vendor_perl/Warewulf/ /usr/share/perl5/vendor_perl/Warewulf/
 COPY --from=0 /usr/local/ /usr/local/
 COPY --from=0 /data/ /buildtime-statedir/
-COPY --from=1 /bin/warewulf-sync /usr/local/bin/warewulf-sync
 
 COPY static/ /usr/local/share/warewulf/www
 COPY healthcheck/health.pl /usr/local/libexec/warewulf/cgi-bin/health.pl
